@@ -3,14 +3,30 @@ import java.util.Scanner;
 public class FortuneTeller {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String retirement;
+        String bankBalance;
+        String vacation;
+        String transportation;
         System.out.println("Enter your first name");
         String firstName = scanner.nextLine();
         System.out.println("Enter your last name");
         String lastName = scanner.nextLine();
         System.out.println("Enter your age");
         int age = scanner.nextInt();
+        if (age % 2 == 0)
+            retirement = "20 years";
+        else
+            retirement = "27 years";
         System.out.println("Enter your birth month in number format");
         int birthMonth = scanner.nextInt();
+        if (birthMonth >= 1 && birthMonth <= 4)
+            bankBalance = "$357,001.34";
+        else if (birthMonth <= 8)
+            bankBalance = "$7,299,305.22";
+        else if (birthMonth <= 12)
+            bankBalance = "$96.85";
+        else
+            bankBalance = "$0.97";
         scanner.nextLine();
         System.out.println("Enter your favorite ROYGBIV color. Type Help to print ROYGBIV colors");
         String favoriteColor = scanner.nextLine();
@@ -23,63 +39,54 @@ public class FortuneTeller {
                 && !favoriteColor.equalsIgnoreCase("violet")) {
             if (favoriteColor.equalsIgnoreCase("help")) {
                 displayRoygbivColors();
-            } else {
+            } else
                 System.out.println("You entered an invalid color! Please try again.");
-            }
+
             System.out.println("Enter your favorite ROYGBIV color. Type Help to print ROYGBIV colors");
             favoriteColor = scanner.nextLine();
         }
+        if (favoriteColor.equalsIgnoreCase("red"))
+            transportation = "Electric car";
+        else if (favoriteColor.equalsIgnoreCase("orange"))
+            transportation = "Taxi";
+        else if (favoriteColor.equalsIgnoreCase("yellow"))
+            transportation = "Motorcycle";
+        else if (favoriteColor.equalsIgnoreCase("green"))
+            transportation = "Space ship";
+        else if (favoriteColor.equalsIgnoreCase("blue"))
+            transportation = "Bus";
+        else if (favoriteColor.equalsIgnoreCase("indigo"))
+            transportation = "Airplane";
+        else
+            transportation = "Boat";
         System.out.println("Enter number of siblings");
         int siblings = scanner.nextInt();
         scanner.close();
-
-        if (age % 2 == 0)
-            System.out.println("20 years.");
-        else
-            System.out.println("21 years.");
         if (siblings < 0)
-            System.out.println("North Korea.");
+            vacation = "North Korea";
         else if (siblings == 0)
-            System.out.println("India.");
+            vacation = "India";
         else if (siblings == 1)
-            System.out.println("Canada.");
+            vacation = "Canada";
         else if (siblings == 2)
-            System.out.println("Egypt.");
-        else if (siblings == 2)
-            System.out.println("England.");
+            vacation = "Iceland";
+        else if (siblings == 3)
+            vacation = "England";
         else
-            System.out.println("Philippines.");
-        if (favoriteColor.equalsIgnoreCase("red"))
-            System.out.println("Electric car");
-        else if (favoriteColor.equalsIgnoreCase("orange"))
-            System.out.println("Taxi");
-        else if (favoriteColor.equalsIgnoreCase("yellow"))
-            System.out.println("Motorcycle");
-        else if (favoriteColor.equalsIgnoreCase("green"))
-            System.out.println("Space ship");
-        else if (favoriteColor.equalsIgnoreCase("blue"))
-            System.out.println("Bus");
-        else if (favoriteColor.equalsIgnoreCase("indigo"))
-            System.out.println("Airplane");
-        else
-            System.out.println("Boat");
-        if (birthMonth >= 1 && birthMonth <= 4)
-            System.out.println("Your bank balance is $357,001.34");
-        else if (birthMonth <= 8)
-            System.out.println("Your bank balance is $7,299,305.22");
-        else if (birthMonth <= 12)
-            System.out.println("Your bank balance is $96.85");
-        else
-            System.out.println("Your bank balance is $0.97");
+            vacation = "Philippines";
+
+        System.out.println(firstName + " " + lastName + " will retire in " + retirement + " with " + bankBalance +
+                " in the bank, a vacation home in " + vacation + ", and travel by " + transportation + ".");
     }
 
     public static void displayRoygbivColors() {
-        System.out.println("--Red--");
-        System.out.println("--Orange--");
-        System.out.println("--Yellow--");
-        System.out.println("--Green--");
-        System.out.println("--Blue--");
-        System.out.println("--Indigo--");
-        System.out.println("--Violet--");
+        System.out.println("The ROYGBIV colors are: ");
+        System.out.println("      --Red--");
+        System.out.println("      --Orange--");
+        System.out.println("      --Yellow--");
+        System.out.println("      --Green--");
+        System.out.println("      --Blue--");
+        System.out.println("      --Indigo--");
+        System.out.println("      --Violet--");
     }
 }
