@@ -9,12 +9,24 @@ public class FortuneTeller {
         String transportation;
         System.out.println("Enter your first name: ");
         String firstName = scanner.nextLine();
+        if (quitChecker(firstName)) {
+            scanner.close();
+            return;
+        }
         System.out.println("Enter your last name: ");
         String lastName = scanner.nextLine();
+        if (quitChecker(lastName)) {
+            scanner.close();
+            return;
+        }
         System.out.println("Enter your age: ");
         while (!scanner.hasNextInt()) {
+            if (quitChecker(scanner.next())) {
+                scanner.close();
+                return;
+            }
+            System.out.println("Please enter a number or type quit to exit!");
             System.out.println("Enter your age: ");
-            scanner.next();
         }
         int age = scanner.nextInt();
         if (age % 2 == 0)
@@ -23,8 +35,12 @@ public class FortuneTeller {
             retirement = "27 years";
         System.out.println("Enter your birth month in number format: ");
         while (!scanner.hasNextInt()) {
+            if (quitChecker(scanner.next())) {
+                scanner.close();
+                return;
+            }
+            System.out.println("Please enter a number or type quit to exit!");
             System.out.println("Enter your birth month in number format: ");
-            scanner.next();
         }
         int birthMonth = scanner.nextInt();
         if (birthMonth >= 1 && birthMonth <= 4)
@@ -45,10 +61,13 @@ public class FortuneTeller {
                 && !favoriteColor.equalsIgnoreCase("blue")
                 && !favoriteColor.equalsIgnoreCase("indigo")
                 && !favoriteColor.equalsIgnoreCase("violet")) {
-            if (favoriteColor.equalsIgnoreCase("help")) {
+            if (quitChecker(favoriteColor)) {
+                scanner.close();
+                return;
+            } else if (favoriteColor.equalsIgnoreCase("help")) {
                 displayRoygbivColors();
             } else
-                System.out.println("You entered an invalid color! Please try again.");
+                System.out.println("You entered an invalid color. Please try again or type quit to exit!");
 
             System.out.println("Enter your favorite ROYGBIV color. Type Help to print ROYGBIV colors");
             favoriteColor = scanner.nextLine();
@@ -69,8 +88,12 @@ public class FortuneTeller {
             transportation = "Boat";
         System.out.println("Enter number of siblings: ");
         while (!scanner.hasNextInt()) {
+            if (quitChecker(scanner.next())) {
+                scanner.close();
+                return;
+            }
+            System.out.println("Please enter a number or type quit to exit!");
             System.out.println("Enter number of siblings: ");
-            scanner.next();
         }
         int siblings = scanner.nextInt();
         scanner.close();
@@ -100,5 +123,13 @@ public class FortuneTeller {
         System.out.println("      --Blue--");
         System.out.println("      --Indigo--");
         System.out.println("      --Violet--");
+    }
+
+    public static boolean quitChecker(String input) {
+        if (input.equalsIgnoreCase("quit")) {
+            System.out.println("Nobody likes a quitter...");
+            return true;
+        }
+        return false;
     }
 }
