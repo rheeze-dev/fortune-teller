@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class FortuneTeller {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String retirement = "";
+        String retirement;
         String bankBalance;
         String vacation;
         String transportation;
@@ -68,7 +68,6 @@ public class FortuneTeller {
                 displayRoygbivColors();
             } else
                 System.out.println("You entered an invalid color. Please try again or type quit to exit!");
-
             System.out.println("Enter your favorite ROYGBIV color. Type Help to print ROYGBIV colors");
             favoriteColor = scanner.nextLine();
         }
@@ -110,7 +109,8 @@ public class FortuneTeller {
         else
             vacation = "Philippines";
 
-        System.out.println(firstName + " " + lastName + " will retire in " + retirement + " with " + bankBalance +
+        System.out.println(nameFormatter(firstName) + " " + nameFormatter(lastName) + " will retire in " + retirement
+                + " with " + bankBalance +
                 " in the bank, a vacation home in " + vacation + ", and travel by " + transportation + ".");
     }
 
@@ -131,5 +131,10 @@ public class FortuneTeller {
             return true;
         }
         return false;
+    }
+
+    public static String nameFormatter(String name) {
+        name = name.toLowerCase();
+        return name = name.substring(0, 1).toUpperCase() + name.substring(1);
     }
 }
