@@ -3,21 +3,29 @@ import java.util.Scanner;
 public class FortuneTeller {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String retirement;
+        String retirement = "";
         String bankBalance;
         String vacation;
         String transportation;
-        System.out.println("Enter your first name");
+        System.out.println("Enter your first name: ");
         String firstName = scanner.nextLine();
-        System.out.println("Enter your last name");
+        System.out.println("Enter your last name: ");
         String lastName = scanner.nextLine();
-        System.out.println("Enter your age");
+        System.out.println("Enter your age: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Enter your age: ");
+            scanner.next();
+        }
         int age = scanner.nextInt();
         if (age % 2 == 0)
             retirement = "20 years";
         else
             retirement = "27 years";
-        System.out.println("Enter your birth month in number format");
+        System.out.println("Enter your birth month in number format: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Enter your birth month in number format: ");
+            scanner.next();
+        }
         int birthMonth = scanner.nextInt();
         if (birthMonth >= 1 && birthMonth <= 4)
             bankBalance = "$357,001.34";
@@ -59,7 +67,11 @@ public class FortuneTeller {
             transportation = "Airplane";
         else
             transportation = "Boat";
-        System.out.println("Enter number of siblings");
+        System.out.println("Enter number of siblings: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Enter number of siblings: ");
+            scanner.next();
+        }
         int siblings = scanner.nextInt();
         scanner.close();
         if (siblings < 0)
