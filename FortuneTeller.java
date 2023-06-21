@@ -7,40 +7,50 @@ public class FortuneTeller {
         String bankBalance;
         String vacation;
         String transportation;
-        System.out.println("Enter your first name: ");
+        System.out.print("Enter your first name: ");
         String firstName = scanner.nextLine();
         if (quitChecker(firstName)) {
             scanner.close();
             return;
         }
-        System.out.println("Enter your last name: ");
+        while (firstName.trim().isEmpty()) {
+            System.out.println("First name cannot be empty!");
+            System.out.print("Enter your first name: ");
+            firstName = scanner.nextLine();
+        }
+        System.out.print("Enter your last name: ");
         String lastName = scanner.nextLine();
         if (quitChecker(lastName)) {
             scanner.close();
             return;
         }
-        System.out.println("Enter your age: ");
+        while (lastName.trim().isEmpty()) {
+            System.out.println("Last name cannot be empty!");
+            System.out.print("Enter your last name: ");
+            lastName = scanner.nextLine();
+        }
+        System.out.print("Enter your age: ");
         while (!scanner.hasNextInt()) {
             if (quitChecker(scanner.next())) {
                 scanner.close();
                 return;
             }
             System.out.println("Please enter a number or type quit to exit!");
-            System.out.println("Enter your age: ");
+            System.out.print("Enter your age: ");
         }
         int age = scanner.nextInt();
         if (age % 2 == 0)
             retirement = "20 years";
         else
             retirement = "27 years";
-        System.out.println("Enter your birth month in number format: ");
+        System.out.print("Enter your birth month in number format: ");
         while (!scanner.hasNextInt()) {
             if (quitChecker(scanner.next())) {
                 scanner.close();
                 return;
             }
             System.out.println("Please enter a number or type quit to exit!");
-            System.out.println("Enter your birth month in number format: ");
+            System.out.print("Enter your birth month in number format: ");
         }
         int birthMonth = scanner.nextInt();
         if (birthMonth >= 1 && birthMonth <= 4)
@@ -52,7 +62,7 @@ public class FortuneTeller {
         else
             bankBalance = "$0.97";
         scanner.nextLine();
-        System.out.println("Enter your favorite ROYGBIV color. Type Help to print ROYGBIV colors");
+        System.out.print("Enter your favorite ROYGBIV color or type help to print ROYGBIV colors: ");
         String favoriteColor = scanner.nextLine();
         while (!favoriteColor.equalsIgnoreCase("red")
                 && !favoriteColor.equalsIgnoreCase("orange")
@@ -68,7 +78,8 @@ public class FortuneTeller {
                 displayRoygbivColors();
             } else
                 System.out.println("You entered an invalid color. Please try again or type quit to exit!");
-            System.out.println("Enter your favorite ROYGBIV color. Type Help to print ROYGBIV colors");
+            System.out.print("Enter your favorite ROYGBIV color or type help to print ROYGBIV colors: ");
+
             favoriteColor = scanner.nextLine();
         }
         if (favoriteColor.equalsIgnoreCase("red"))
@@ -85,14 +96,14 @@ public class FortuneTeller {
             transportation = "Airplane";
         else
             transportation = "Boat";
-        System.out.println("Enter number of siblings: ");
+        System.out.print("Enter number of siblings: ");
         while (!scanner.hasNextInt()) {
             if (quitChecker(scanner.next())) {
                 scanner.close();
                 return;
             }
             System.out.println("Please enter a number or type quit to exit!");
-            System.out.println("Enter number of siblings: ");
+            System.out.print("Enter number of siblings: ");
         }
         int siblings = scanner.nextInt();
         scanner.close();
